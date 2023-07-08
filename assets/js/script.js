@@ -13,7 +13,6 @@ var allCharacters = lowerCase + upperCase + numeric + specialCharacters;
 // In the function is where I want to make string var. Look into split for js, do if statements
 function generatePassword() {
   console.log ("Here");
-  // Will use let instead of var because let is only used once, var can be used however many times we'd like.
   let count= prompt("How many characters?");
   let lowerCase = prompt("Do you want lower case? (y/n)");
   let upperCase= prompt("Do you want upperCase? (y/n)");
@@ -29,7 +28,15 @@ function generatePassword() {
   while(countMax < password.length) {
     password += allCharacters[Math.floor(Math.random() * allCharacters.length)];
   }
+  var generateBtn = document.querySelector("#generate");
+
+    function writePassword() {
+    var password = generatePassword();
+    var passwordText = document.querySelector("#password");
+
   passwordText.value = password;
+
+}
   //Need to create if statement so that if somebody types in incorrect response to let prompt questions it says:
   //Oops, incorrect character length. Please type a number that is between 8 - 128"
   //Oops, incorrect response. Please type either y for yes or n for no. 
@@ -40,16 +47,16 @@ function generatePassword() {
 }
 
 // Get references to the #generate element
-var generateBtn = document.querySelector("#generate");
+// var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+// function writePassword() {
+//   var password = generatePassword();
+//   var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
+//   passwordText.value = password;
 
-}
+// }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
