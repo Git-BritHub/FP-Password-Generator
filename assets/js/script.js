@@ -3,15 +3,28 @@
 var generateBtn = document.querySelector("#generate");
 
 // variable characters that are allowed to be used in password:
-var lowerCase = "abcdefghijklmnopqrstuvwxyz";
-var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var numeric = "0123456789";
-var specialCharacters = "!#$%&*+,-./:;<=>?@_~";
-var allCharacters = lowerCase + upperCase + numeric + specialCharacters;
+// var lowerCase = "abcdefghijklmnopqrstuvwxyz";
+// var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+// var numeric = "0123456789";
+// var specialCharacters = "!#$%&*+,-./:;<=>?@_~";
+// omitted above character codes since I've decided to now use the string.fromCharCode() for cleaner code.
+const lowerCase_char_codes = arrayFromLowToHigh(97, 122);
+const upperCase_char_codes = arrayFromLowToHigh(65, 90);
+const numeric_char_codes = arrayFromLowToHigh(48, 57);
+const specialCharacters_char_codes = arrayFromLowToHigh(33, 47).concat(
+  arrayFromLowToHigh(58, 64)
+).concat(
+  arrayFromLowToHigh(91, 96)
+).concat(
+  arrayFromLowToHigh(123, 126)
+)
+
+const allCharacters = lowerCase + upperCase + numeric + specialCharacters;
 
 // In the function is where I want to make string var. Look into split for js, do if statements
-function generatePassword() {
+function generatePassword(length, lowerCase, upperCase, numeric, specialCharacters) {
   console.log ("Generate Password Button Clicked!");
+  String.fromCharCode()
   //Create 'if' statement so that if somebody types in incorrect response to let prompt questions it says:
   //Oops, incorrect character length. Please type a number that is between 8 - 128"
   //Oops, incorrect response. Please type either y for yes or n for no. 
@@ -41,16 +54,13 @@ function generatePassword() {
   }
 
   //Want to make for-loop so that password can't be be shorter than 8 or longer than 128
-  //In this case 'while' is better to use than 'for'. 
-  //Not sure if what I did below will account for both min and max
-
-  // while(length > password.length) {
-  //   password += allCharacters[Math.floor(Math.random() * allCharacters.length)];
-  // }
-  // while(length.max < password.length) {
-  //   password += allCharacters[Math.floor(Math.random() * allCharacters.length)];
-  // }
-
+function arrayFromLowToHigh(low, high) {
+  const array = []
+  for (let i = low; i <= high; i++) {
+    array.push(i)
+  }
+  return array
+}
   //Need to create if statement so that if somebody types in incorrect response to let prompt questions it says:
   //Oops, incorrect character length. Please type a number that is between 8 - 128"
   //Oops, incorrect response. Please type either y for yes or n for no. 
