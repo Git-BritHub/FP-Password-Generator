@@ -1,6 +1,7 @@
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
-// variable characters that are allowed to be used in password:
+// Decided to use split for var lower, upper, numeric and special instead of char code chart
+// var characters that are allowed to be used in password:
 var lowerCase = "abcdefghijklmnopqrstuvwxyz".split("");
 var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 var numeric = "0123456789".split("");
@@ -15,6 +16,7 @@ function generatePassword() {
   // Use OR to keep password length within range of 8-128
   if (passwordLength < 8 || passwordLength > 128) {
     alert("You must have a length between 8 and 128. Please Retry!");
+    // Resets question if you put incorrect response
     generatePassword();
   };
   // Instead of doing y/n selections, will just use cancel for no and ok for yes to keep code more simple and clean
@@ -30,10 +32,13 @@ function generatePassword() {
   if (confirm("Proceed with special character values in your password?")) {
     container = container.concat(specialCharacters);
   };
+  // If statement below is needed in case someone accidentally selects no/cancel for each one
   if (container.length === 0) {
     alert("You must choose atleast one character type. Please Retry!")
+    // Resets questions if you put incorrect response no/cancel for each one
     generatePassword();
   } else {
+    // This else statement makes more sense to use now that length range method is more simple
     for (var i = 0; i < passwordLength; i++) {
       var randomIndex = Math.floor(Math.random() * container.length);
       builder += container[randomIndex];
@@ -51,3 +56,6 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
+// Was having a lot of issues with other methods that I tried to make this a successful password generator,
+// Eventually figured out that this method above was the best option.
