@@ -7,7 +7,7 @@ var generateBtn = document.querySelector("#generate");
 // var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 // var numeric = "0123456789";
 // var specialCharacters = "!#$%&*+,-./:;<=>?@_~";
-// omitted above character codes since I've decided to now use the string.fromCharCode() for cleaner code.
+// omitted above variables since I've decided to now use the string.fromCharCode() for cleaner code.
 const lowerCase_char_codes = arrayFromLowToHigh(97, 122);
 const upperCase_char_codes = arrayFromLowToHigh(65, 90);
 const numeric_char_codes = arrayFromLowToHigh(48, 57);
@@ -19,12 +19,9 @@ const specialCharacters_char_codes = arrayFromLowToHigh(33, 47).concat(
   arrayFromLowToHigh(123, 126)
 )
 
-const allCharacters = lowerCase + upperCase + numeric + specialCharacters;
-
 // In the function is where I want to make string var. Look into split for js, do if statements
-function generatePassword(length, lowerCase, upperCase, numeric, specialCharacters) {
+function generatePassword() {
   console.log ("Generate Password Button Clicked!");
-  String.fromCharCode()
   //Create 'if' statement so that if somebody types in incorrect response to let prompt questions it says:
   //Oops, incorrect character length. Please type a number that is between 8 - 128"
   //Oops, incorrect response. Please type either y for yes or n for no. 
@@ -33,7 +30,8 @@ function generatePassword(length, lowerCase, upperCase, numeric, specialCharacte
   //need to make sure that selecting 'cancel' in the prompt screen exits you out of the prompt screen and 
   //takes you back to page where you can reselect generator button
   let length = prompt("How many characters?");
-    function stringlength(inputtxt,minLength,maxLength) {
+    //Want to make for-loop so that password can't be be shorter than 8 or longer than 128
+    function stringLength(inputtxt,minLength,maxLength) {
       var field = inputtxt.value;
       var mnlen = minLength(8);
       var mxlen = maxLength(128);
@@ -45,15 +43,39 @@ function generatePassword(length, lowerCase, upperCase, numeric, specialCharacte
       }
     }
   let lowerCase = prompt("Do you want lower case? (y/n)");
+  if (lowerCase) charCodes = charCodes.concat(lowerCase_char_codes) {
+     } else {
+      // return proceed with no lowerCase used
+    }
+
   let upperCase= prompt("Do you want upperCase? (y/n)");
+  if (upperCase) charCodes = charCodes.concat(upperCase_char_codes) {
+    } else {
+      // return proceed with no upperCase used
+    }
   let numeric = prompt("How many numbers?");
+  if (numeric) charCodes = charCodes.concat(numeric_char_codes) {
+    } else {
+      // return proceed with no numbers used
+    }
   let specialCharacters = prompt("Do you want special characters? (y/n)");
+  if (specialCharacters) charCodes = charCodes.concat(specialCharacters_char_codes) {
+    } else {
+      // return proceed with no special characters
+    }
   console.log (length, lowerCase, upperCase,numeric, specialCharacters);
 
-  return allCharacters;
+  const allCharacters = []
+  for (let i = 0; i < length; i++) {
+    const characterCode = charCodes[Math.floor(Math.random() *
+      length)]
+      allCharacters.push(String.fromCharCode(characterCode))
   }
+  return allCharacters.join(" ")
+}
 
-  //Want to make for-loop so that password can't be be shorter than 8 or longer than 128
+// function to make string of lowerCase, upperCase, numeric, and specialCharacters 
+// list from their char number lowest to highest in consts put above in global section.
 function arrayFromLowToHigh(low, high) {
   const array = []
   for (let i = low; i <= high; i++) {
@@ -61,13 +83,6 @@ function arrayFromLowToHigh(low, high) {
   }
   return array
 }
-  //Need to create if statement so that if somebody types in incorrect response to let prompt questions it says:
-  //Oops, incorrect character length. Please type a number that is between 8 - 128"
-  //Oops, incorrect response. Please type either y for yes or n for no. 
-  //Oops, incorrect response. Please give the number amount of how many numbers you would like in your password.
-
-  //need to make sure that selecting 'cancel' in the prompt screen exits you out of the prompt screen and 
-  //takes you back to page where you can reselect generator button
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -78,7 +93,6 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
 
 // Add event listener to generate button
