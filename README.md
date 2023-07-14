@@ -8,7 +8,7 @@ Friendly Parakeet's (FP) Secure Password Generator
 [Live URL](https://git-brithub.github.io/FP-Password-Generator/)
 
 ## Description
-For employer Friendly Parakeet, I debugged and wrote code that allowed JavaScript to successfully generate a secure, strong and random password. This user-friendly password generator includes prompt questions; which give the employee control of the type and length of characters to have within.
+For employer Friendly Parakeet, I debugged and wrote code that allowed JavaScript to successfully generate a secure, strong and random password. This user-friendly password generator includes prompt questions, giving the employee further security and control of the type and length of characters for their password.
 
 ## Usage
 ![alt text](assets/images/screenshot.png)
