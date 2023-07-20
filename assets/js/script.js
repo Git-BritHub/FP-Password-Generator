@@ -34,8 +34,12 @@ function generatePassword() {
   };
   // If statement below is needed in case someone accidentally selects no/cancel for each one
   if (container.length === 0) {
-    alert("You must choose atleast one character type. Please Retry!")
-    // Resets questions if you put incorrect response no/cancel for each one
+    alert("You must choose at least one character type. Please Retry!")
+    // return "" resets questions if you put incorrect response no/cancel for each one
+    // Before adding `return ""` below, after answering questions correctly (when first selecting cancel/no
+    // for every option character length), it correctly allowed you to immediately start re-asking questions
+    // but did not generate a password the second time around like it would for any other password combination. 
+    // It (before this fix) only generated a password correctly if you said ok/yes to at least one value question.
     return "";
   } else {
     // This else statement makes more sense to use now that length range method is more simple
@@ -45,7 +49,6 @@ function generatePassword() {
     };
   };
   return builder;
-
 };
 
 // Write password to the #password input
