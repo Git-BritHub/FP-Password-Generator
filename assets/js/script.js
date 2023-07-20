@@ -18,7 +18,7 @@ function generatePassword() {
     alert("You must have a length between 8 and 128. Please Retry!");
     // Resets question if you put incorrect response
     generatePassword();
-  };
+  }
   // Instead of doing y/n selections, will just use cancel for no and ok for yes to keep code more simple and clean
   if (confirm("Proceed with lowercase values in your password?")) {
     container = container.concat(lowerCase);
@@ -36,7 +36,7 @@ function generatePassword() {
   if (container.length === 0) {
     alert("You must choose atleast one character type. Please Retry!")
     // Resets questions if you put incorrect response no/cancel for each one
-    generatePassword();
+    return "";
   } else {
     // This else statement makes more sense to use now that length range method is more simple
     for (var i = 0; i < passwordLength; i++) {
@@ -45,6 +45,7 @@ function generatePassword() {
     };
   };
   return builder;
+
 };
 
 // Write password to the #password input
